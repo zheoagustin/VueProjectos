@@ -1,28 +1,62 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <botonFuncion :accion="mostrar" :funcion="mostrarTable"></botonFuncion>
+    <botonFuncion :accion="ocultar" :funcion="ocultarTable"></botonFuncion>
+    <tablaUno :dato="peliculas" class="container"></tablaUno>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import tablaUno from './components/tablaUno.vue'
+import botonFuncion from './components/botonFuncion.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    tablaUno,
+    botonFuncion
+  },
+  data (){
+    return {
+       peliculas: [{ año: 1997, pelicula: "Terminator", puntaje: 8 },
+          { año: 1995, pelicula: "Duro de matar", puntaje: 7 },
+          { año: 1990, pelicula: "Chucky", puntaje: 3 },
+          { año: 2003, pelicula: "Rapidos y furioso", puntaje: 6 },
+          { año: 2008, pelicula: "Los mercenarios", puntaje: 10 },
+          { año: 2010, pelicula: "Spider Man ", puntaje: 9 }
+          ],
+        mostrar : "Mostrar",
+        ocultar: "Ocultar",
+    }
+  },
+  methods : {
+     mostrarTable(){
+        this.peliculas = [{ año: 1997, pelicula: "Terminator", puntaje: 8 },
+        { año: 1995, pelicula: "Duro de matar", puntaje: 7 },
+        { año: 1990, pelicula: "Chucky", puntaje: 3 },
+        { año: 2003, pelicula: "Rapidos y furioso", puntaje: 6 },
+        { año: 2008, pelicula: "Los mercenarios", puntaje: 10 },
+        { año: 2010, pelicula: "Spider Man ", puntaje: 9 }]
+        },
+     ocultarTable(){
+        this.peliculas= []
+        }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+.container {
+    margin-top: 30px;
+
 }
+
+body {
+    background: linear-gradient(45deg, rgb(1, 1, 155), rgb(1, 18, 114));;
+    
+}
+
+
 </style>
